@@ -1,0 +1,22 @@
+CC=gcc
+CFLAGS=-W -g
+LDFLAGS=
+EXEC=ArgcArgv FPolling FNotify
+
+all: $(EXEC)
+
+ArgcArgv: ArgcArgv.o
+	$(CC) -o $@ $^ $(LDFLAGS)
+FPolling: FPolling.o
+	$(CC) -o $@ $^ $(LDFLAGS)
+FNotify: FNotify.o
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+%.o: %.c
+	$(CC) -o $@ -c $^ $(CFLAGS)
+
+clean:
+	rm -rf *.o
+mrproper:
+	rm -rf $(EXEC)
+
